@@ -23,30 +23,71 @@ namespace Methods
 
         public static string GetName()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Please enter your name:");
+            return Console.ReadLine();
+            //throw new NotImplementedException();
         }
 
         public static void GreetFriend(string name)
         {
             //Greeting should be: Hello, nameVar. You are my friend
             //Ex: Hello, Jim. You are my friend
-            throw new NotImplementedException();
+            Console.WriteLine($"Hello, {name}. You are my friend");
+            //throw new NotImplementedException();
         }
 
         public static double GetNumber()
         {
+            Console.WriteLine("Enter a Number:");
+            string s = Console.ReadLine();
+            if(Double.TryParse(s,out double validDouble)){
+                return validDouble;
+            }
+            throw new FormatException();
             //Should throw FormatException if the user did not input a number
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         public static int GetAction()
         {
-            throw new NotImplementedException();
+            while(true){
+            Console.WriteLine("What would you like to do:");
+            Console.WriteLine("1)add, 2)subtract, 3)multiply, or 4)divide");
+            string s = Console.ReadLine();
+            if(Int32.TryParse(s,out int input)){
+                if(input>0 && input<5){
+                    return input;
+                }
+            }
+            }
+            //throw new NotImplementedException();
         }
 
         public static double DoAction(double x, double y, int z)
         {
-            throw new NotImplementedException();
+            if(z<1 || z>4){
+            throw new FormatException();
+            }
+            double val;
+            //throw new FormatException();
+            switch(z){
+                case 1: val =x+y;Console.WriteLine(val); return val;
+                case 2: val=y-x;Console.WriteLine(val); return val;
+                case 3: val=x*y;Console.WriteLine(val); return (val);
+                default: 
+                    if(x != 0)
+                    {
+                        val=y/x;
+                        Console.WriteLine(val);
+                        return (val);
+                    }
+                    else
+                    {
+                        throw new DivideByZeroException();
+                    }
+                    
+            }
+            //throw new NotImplementedException();
         }
     }
 }
